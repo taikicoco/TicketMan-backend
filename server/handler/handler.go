@@ -3,8 +3,8 @@ package handler
 import (
 	"server/repository"
 
-	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
+	"github.com/labstack/echo/v4"
 )
 
 type Handler struct {
@@ -27,11 +27,11 @@ func SetupRoutes(e *echo.Echo, db *gorm.DB) {
 			u.GET("", h.GetUsers)
 			u.GET("/:id", h.GetUser)
 		}
-		g := v1.Group("/genres")
-		{
-			g.GET("", h.GetGenres)
-			g.GET("/:id", h.GetGenre)
-		}
+		// g := v1.Group("/genres")
+		// {
+		// 	g.GET("", getGenres)
+		// 	g.GET("/:id", getGenre)
+		// }
 		// t := v1.Group("/tickets")
 		// {
 		// 	t.GET("", getTickets)
