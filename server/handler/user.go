@@ -20,7 +20,7 @@ func (h *Handler) GetUsers(c echo.Context) error {
 
 func (h *Handler) GetUser(c echo.Context) error {
 	var req struct {
-		ID int `param:"id"`
+		ID uint `param:"id"`
 	}
 	if err := c.Bind(&req); err != nil {
 		return err
@@ -34,7 +34,7 @@ func (h *Handler) GetUser(c echo.Context) error {
 }
 
 func (h *Handler) GetME(c echo.Context) error {
-	userID := c.Get("userID").(int)
+	userID := c.Get("userID").(uint)
 
 	user, err := h.repo.GetUser(userID)
 	if err != nil {
@@ -72,7 +72,7 @@ func (h *Handler) CreateUser(c echo.Context) error {
 }
 
 func (h *Handler) UpdateME(c echo.Context) error {
-	userID := c.Get("userID").(int)
+	userID := c.Get("userID").(uint)
 	var req request.ReqUpdateUser
 	if err := c.Bind(&req); err != nil {
 		return err
@@ -94,13 +94,13 @@ func (h *Handler) UpdateME(c echo.Context) error {
 }
 
 func (h *Handler) DeleteME(c echo.Context) error {
-	userID := c.Get("userID").(int)
+	userID := c.Get("userID").(uint)
 	h.repo.DeleteMe(userID)
 	return c.NoContent(http.StatusNoContent)
 }
 
 func (h *Handler) CreateUserGenre(c echo.Context) error {
-	userID := c.Get("userID").(int)
+	userID := c.Get("userID").(uint)
 	var req request.ReqUpdateUserGenre
 	if err := c.Bind(&req); err != nil {
 		return err

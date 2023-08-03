@@ -6,7 +6,7 @@ type ReqCreateGenre struct {
 }
 
 type ReqUpdateGenre struct {
-	ID    int    `param:"id"`
+	ID    uint    `param:"id"`
 	Title string `json:"title"`
 	Color string `json:"color"`
 }

@@ -3,6 +3,7 @@ package handler
 import (
 	"server/handler/request"
 	"server/model"
+	"fmt"
 
 	"github.com/labstack/echo/v4"
 )
@@ -12,7 +13,7 @@ func (h *Handler) GetTickets(c echo.Context) error {
 	if err := c.Bind(&req); err != nil {
 		return err
 	}
-	tickets, err := h.repo.GetTickets()
+	tickets, err := h.repo.GetTickets(req)
 	if err != nil {
 		return c.JSON(500, err)
 	}
@@ -21,7 +22,7 @@ func (h *Handler) GetTickets(c echo.Context) error {
 
 func (h *Handler) GetTicket(c echo.Context) error {
 	var req struct {
-		ID int `param:"id"`
+		ID uint `param:"id"`
 	}
 	if err := c.Bind(&req); err != nil {
 		return err
@@ -67,6 +68,7 @@ func (h *Handler) UpdateTicket(c echo.Context) error {
 		return c.JSON(500, err)
 	}
 
+	fmt.Println(req)
 	ticket.Title = req.Title
 	ticket.Status = req.Status
 	ticket.DueDate = req.DueDate
@@ -86,7 +88,7 @@ func (h *Handler) UpdateTicket(c echo.Context) error {
 
 func (h *Handler) DeleteTicket(c echo.Context) error {
 	var req struct {
-		ID int `param:"id"`
+		ID uint `param:"id"`
 	}
 	if err := c.Bind(&req); err != nil {
 		return err

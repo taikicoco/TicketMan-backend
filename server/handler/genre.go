@@ -17,7 +17,7 @@ func (h *Handler) GetGenres(c echo.Context) error {
 
 func (h *Handler) GetGenre(c echo.Context) error {
 	var req struct {
-		ID int `param:"id"`
+		ID uint `param:"id"`
 	}
 	if err := c.Bind(&req); err != nil {
 		return err
@@ -67,7 +67,7 @@ func (h *Handler) UpdateGenre(c echo.Context) error {
 
 func (h *Handler) DeleteGenre(c echo.Context) error {
 	var req struct {
-		ID int `param:"id"`
+		ID uint `param:"id"`
 	}
 	if err := c.Bind(&req); err != nil {
 		return err
