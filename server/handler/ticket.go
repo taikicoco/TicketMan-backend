@@ -3,7 +3,6 @@ package handler
 import (
 	"server/handler/request"
 	"server/model"
-	"fmt"
 
 	"github.com/labstack/echo/v4"
 )
@@ -68,7 +67,6 @@ func (h *Handler) UpdateTicket(c echo.Context) error {
 		return c.JSON(500, err)
 	}
 
-	fmt.Println(req)
 	ticket.Title = req.Title
 	ticket.Status = req.Status
 	ticket.DueDate = req.DueDate
