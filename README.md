@@ -1,4 +1,4 @@
-# teamC
+# TicketMan
 
 `create .env`
 
