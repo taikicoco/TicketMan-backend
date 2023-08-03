@@ -13,7 +13,7 @@ func (r *Repository) GetUsers() ([]*model.User, error) {
 	return users, nil
 }
 
-func (r *Repository) GetUser(id int) (*model.User, error) {
+func (r *Repository) GetUser(id uint) (*model.User, error) {
 	var user model.User
 	result := r.db.Preload("Genres").First(&user, id)
 	if result.Error != nil {
@@ -47,7 +47,7 @@ func (r *Repository) UpdateUser(user *model.User) (*model.User, error) {
 	return user, nil
 }
 
-func (r *Repository) DeleteMe(id int) error {
+func (r *Repository) DeleteMe(id uint) error {
 	result := r.db.Delete(&model.User{}, id)
 	if result.Error != nil {
 		return result.Error

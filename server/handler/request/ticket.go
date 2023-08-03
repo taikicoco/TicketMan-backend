@@ -15,18 +15,18 @@ type ReqCreateTicket struct {
 	StartAt     time.Time `json:"startAt"`
 	EndAt       time.Time `json:"endAt"`
 	Description string    `json:"description"`
-	UserID      int       `json:"userId"`
-	GenreID     int       `json:"genreId"`
+	UserID      uint      `json:"userId"`
+	GenreID     uint      `json:"genreId"`
 }
 
 type ReqUpdateTicket struct {
-	ID          int       `param:"id"`
+	ID          uint      `param:"id"`
 	Title       string    `json:"title"`
 	Status      string    `json:"status"`
 	DueDate     time.Time `json:"dueDate"`
 	StartAt     time.Time `json:"startAt"`
 	EndAt       time.Time `json:"endAt"`
 	Description string    `json:"description"`
-	UserID      int       `json:"userId"`
-	GenreID     int       `json:"genreId"`
+	UserID      uint      `json:"userId"`
+	GenreID     uint      `json:"genreId"`
 }

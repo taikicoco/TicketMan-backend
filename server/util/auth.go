@@ -19,7 +19,7 @@ var (
 	jwtExpiresIn = os.Getenv("JWT_EXPIRATION")
 )
 
-func GenerateToken(userID int) (string, error) {
+func GenerateToken(userID uint) (string, error) {
 	jwtExpiresIn, err := time.ParseDuration(jwtExpiresIn)
 	if err != nil {
 		return "", err
@@ -32,7 +32,7 @@ func GenerateToken(userID int) (string, error) {
 	return token.SignedString([]byte(jwtSecretKey))
 }
 
-func ParseToken(c echo.Context) (int, error) {
+func ParseToken(c echo.Context) (uint, error) {
 	tokenStr := c.Request().Header.Get("Authorization")
 	if tokenStr == "" {
 		return 0, echo.ErrUnauthorized
@@ -63,7 +63,7 @@ func ParseToken(c echo.Context) (int, error) {
 	if !ok {
 		return 0, errors.New("failed to get userID")
 	}
-	return int(userID), nil
+	return uint(userID), nil
 }
 
 func GetUserID(c echo.Context) (uint, error) {

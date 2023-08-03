@@ -13,7 +13,7 @@ func (r *Repository) GetGenres() ([]*model.Genre, error) {
 	return genres, nil
 }
 
-func (r *Repository) GetGenre(id int) (*model.Genre, error) {
+func (r *Repository) GetGenre(id uint) (*model.Genre, error) {
 	var genre model.Genre
 	result := r.db.First(&genre, id)
 	if result.Error != nil {
@@ -38,7 +38,7 @@ func (r *Repository) UpdateGenre(genre *model.Genre) (*model.Genre, error) {
 	return genre, nil
 }
 
-func (r *Repository) DeleteGenre(id int) error {
+func (r *Repository) DeleteGenre(id uint) error {
 	result := r.db.Delete(&model.Genre{}, id)
 	if result.Error != nil {
 		return result.Error

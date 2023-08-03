@@ -12,7 +12,7 @@ func (h *Handler) GetTickets(c echo.Context) error {
 	if err := c.Bind(&req); err != nil {
 		return err
 	}
-	tickets, err := h.repo.GetTickets()
+	tickets, err := h.repo.GetTickets(req)
 	if err != nil {
 		return c.JSON(500, err)
 	}
@@ -21,7 +21,7 @@ func (h *Handler) GetTickets(c echo.Context) error {
 
 func (h *Handler) GetTicket(c echo.Context) error {
 	var req struct {
-		ID int `param:"id"`
+		ID uint `param:"id"`
 	}
 	if err := c.Bind(&req); err != nil {
 		return err
@@ -86,7 +86,7 @@ func (h *Handler) UpdateTicket(c echo.Context) error {
 
 func (h *Handler) DeleteTicket(c echo.Context) error {
 	var req struct {
-		ID int `param:"id"`
+		ID uint `param:"id"`
 	}
 	if err := c.Bind(&req); err != nil {
 		return err
