@@ -1,7 +1,7 @@
 package request
 
 type ReqUpdateUser struct {
-	ID    uint    `param:"id"`
+	ID    uint   `param:"id"`
 	Name  string `json:"name"`
 	Email string `json:"email"`
 }
